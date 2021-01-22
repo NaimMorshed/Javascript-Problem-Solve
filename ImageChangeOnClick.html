@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Change Image on Click</title>
+</head>
+<body>
+    <section class="row mt-5">
+        <div class="col-md-3 d-flex justify-content-end"><button onclick="setImage(1)" class="btn btn-light border border-dark" type="button">Previous</button></div>
+        <div class="col-md-6">
+            <img id="image" class="w-100" src="images/1.jpg" alt="">
+        </div>
+        <div class="col-md-3 d-flex justify-content-start"><button onclick="setImage(2)" class="btn btn-light border border-dark" type="button">Next</button></div>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <h2 class="">Picture-</h2><h2 id="picture-serial">1</h2>
+        </div>
+        <div class="col-md-3"></div>
+    </section>
+
+    <script>
+        var count = 1;
+        var myImg = document.querySelector("#image");
+        function setImage(type){
+            if(type==1){
+                count--;
+                switch(count){
+                    case 1: myImg.src = "images/1.jpg"; imageSerialCounter(count); break;
+                    case 2: myImg.src = "images/2.jpg"; imageSerialCounter(count); break;
+                    case 3: myImg.src = "images/3.jpg"; imageSerialCounter(count); break;
+                    case 4: myImg.src = "images/4.jpg"; imageSerialCounter(count); break;
+                    default: myImg.src = "images/1.jpg"; count=1; imageSerialCounter(count); 
+                }
+            }
+            else if(type==2){
+                count++;
+                switch(count){
+                    case 2: myImg.src = "images/2.jpg"; imageSerialCounter(count); break;
+                    case 3: myImg.src = "images/3.jpg"; imageSerialCounter(count); break;
+                    case 4: myImg.src = "images/4.jpg"; imageSerialCounter(count); break;
+                    case 5: myImg.src = "images/5.jpg"; imageSerialCounter(count); break;
+                    default: myImg.src = "images/1.jpg"; count=1; imageSerialCounter(count);
+                }
+            }
+            else {myImg.src = "images/1.jpg";count=0;}
+        }
+        function imageSerialCounter(count){
+            document.querySelector("#picture-serial").innerHTML = count; 
+        }
+    </script>
+</body>
+</html>
